@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GitHub Finder
+
+A modern web application that helps users discover top GitHub developers in their city or state. Built with Next.js 15, TypeScript, and Tailwind CSS.
+
+## Features
+
+- **Location-based Search**: Search for developers by city or state
+- **GitHub Profile Integration**: Fetch and display comprehensive developer information using the GitHub API
+- **Smart Ranking System**: Sort developers by:
+  - Total stars across repositories
+  - Number of public repositories
+  - Follower count
+- **Beautiful Profile Cards**: Display developer avatars, usernames, bios, and key statistics
+- **Infinite Scroll**: Load more developers with pagination support
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Real-time Sorting**: Change ranking criteria on the fly
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS v4
+- **Icons**: Lucide React
+- **API**: GitHub REST API
+- **Architecture**: App Router, Server Components, API Routes
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd github-finder
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Start the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+### Building for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Search by Location**: Enter a city or state name in the search bar
+2. **View Results**: Browse through developer profiles with key metrics
+3. **Sort Results**: Use the sort controls to rank developers by different criteria
+4. **Load More**: Click "Load More Developers" to see additional results
+5. **View Profiles**: Click "View Profile" to visit a developer's GitHub page
 
-## Deploy on Vercel
+## API Endpoints
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `GET /api/search-developers` - Search for developers by location
+  - Query parameters:
+    - `location` (required): City or state to search in
+    - `page` (optional): Page number for pagination
+    - `sort` (optional): Sort criteria (stars, repos, followers)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## GitHub API Integration
+
+The application uses the GitHub REST API to:
+- Search users by location
+- Fetch detailed user profiles
+- Retrieve repository information
+- Calculate total star counts
+
+**Note**: For production use, consider adding a GitHub Personal Access Token to increase API rate limits.
+
+## Project Structure
+
+```
+app/
+├── components/          # Reusable UI components
+│   ├── DeveloperCard.tsx
+│   ├── LoadingSpinner.tsx
+│   ├── SearchBar.tsx
+│   └── SortControls.tsx
+├── api/                # API routes
+│   └── search-developers/
+│       └── route.ts
+├── globals.css         # Global styles
+├── layout.tsx          # Root layout
+└── page.tsx            # Main page component
+```
+
+## Features in Detail
+
+### Search Functionality
+- Real-time location input with suggestions
+- Error handling for invalid locations
+- Loading states and user feedback
+
+### Developer Cards
+- Profile pictures and usernames
+- Bio information (when available)
+- Key metrics display:
+  - Total repository stars
+  - Public repository count
+  - Follower count
+- Direct links to GitHub profiles
+
+### Ranking System
+- **Stars**: Total stars across all repositories
+- **Repositories**: Number of public repositories
+- **Followers**: GitHub follower count
+- Real-time sorting without page refresh
+
+### Responsive Design
+- Mobile-first approach
+- Grid layout that adapts to screen size
+- Touch-friendly interface elements
+
+## Performance Optimizations
+
+- Lazy loading of developer data
+- Efficient API calls with proper error handling
+- Optimized image loading
+- Smooth transitions and animations
+
+## Browser Support
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+If you encounter any issues or have questions, please open an issue on GitHub.
+
+---
+
+**Built with ❤️ using Next.js and the GitHub API**
