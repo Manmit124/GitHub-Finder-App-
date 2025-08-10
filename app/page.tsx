@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { MapPin, Loader2 } from 'lucide-react';
+import { MapPin, Loader2, Github } from 'lucide-react';
 import SearchBar from './components/SearchBar';
 import SortControls from './components/SortControls';
 import DeveloperCard from './components/DeveloperCard';
@@ -125,7 +125,18 @@ export default function Home() {
                 </a>
               </div> */}
             </div>
-            <div className="ml-4">
+            <div className="ml-4 flex items-center gap-3">
+              {/* GitHub Repository Link */}
+              <a
+                href="https://github.com/Manmit124/GitHub-Finder-App-"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center gap-2"
+                title="View source code on GitHub"
+              >
+                <Github className="h-5 w-5" />
+                {/* <span className="hidden sm:inline text-sm font-medium">Give us Star on GitHub</span> */}
+              </a>
               {/* <ThemeToggle /> */}
             </div>
           </div>
@@ -209,7 +220,7 @@ export default function Home() {
       {/* Loading State for Initial Search */}
       {loading && developers.length === 0 && (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <LoadingSpinner size="lg" text="Searching for developers in Chandrapur, Maharashtra..." />
+          <LoadingSpinner size="lg" text="Searching for developers in chandrapur,Maharashtra..." />
         </div>
       )}
     </div>
